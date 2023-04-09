@@ -8,7 +8,7 @@ const https = require("https");
 const app = express();
 
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true})); 
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/signup.html");
@@ -61,7 +61,7 @@ app.post("/failure", (req, res)=>{
     res.redirect("/");
 });
 
-app.listen(3000, () => {    
+app.listen(process.env.PORT || 3000, () => {      // process.env.PORT for heroku
     console.log("Server is running on port 3000");
 });
 
